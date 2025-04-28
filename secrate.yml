@@ -1,0 +1,4 @@
+---
+git_user: "your_git_user"
+git_password: "your_git_password"
+docker_registry_password: "your_docker_password"

@@ -1,0 +1,23 @@
+- name: Deploy Ansible Exam on Docker/Podman
+  hosts: localhost
+  vars_files:
+    - vault.yml
+  tasks:
+    - name: Clone Git Repository
+      git:
+        repo: 'https://{{ vault_git_username }}:{{ vault_git_password }}@github.com/yourrepo/ansible-exam.git'
+        dest: /tmp/ansible-exam
+        clone: yes
+
+    - name: Deploy Exam App in Docker
+      docker_container:
+        name: ansible-exam
+        image: ansible/ansible-exam:latest
+        state: started
+        ports:
+          - "8080:80"
+
+    - name: Clean up Cloned Git Repo
+      file:
+        path: /tmp/ansible-exam
+        state: absent

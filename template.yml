@@ -1,0 +1,4 @@
+---
+app_name: "{{ app_name }}"
+version: "{{ version }}"
+deploy_path: "{{ deploy_path }}"
